@@ -1,8 +1,20 @@
 from tkinter import *
+import pandas
+import random
 
 BACKGROUND_COLOR = "#B1DDC6"
 FONT = "Arial"
-
+LANGUAGE_FILE = "japanese_words_hiragana.csv"
+LEARNING_LANGUAGE = "Hiragana"
+NATIVE_LANGUAGE = "English"
+MAX_INDEX = 17
+# _________________________________ CREATE FLASH CARDS --------------------- #
+# TODO: 1. Read word data in.
+# TODO: 2. Pick random word to display on card.
+# TODO: 3. Pressing either button should generate a new random word.
+word_file = pandas.read_csv(f"data/{LANGUAGE_FILE}")
+word_dictionary = word_file.to_dict()
+# word_dictionary[LEARNING_LANGUAGE]
 # --------------------------------- UI SETUP ------------------------------- #
 # Window
 window = Tk()
