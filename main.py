@@ -11,15 +11,14 @@ MAX_INDEX = 17
 
 # _________________________________ CREATE FLASH CARDS --------------------- #
 word_file = pandas.read_csv(f"data/{LANGUAGE_FILE}")
-word_dictionary = word_file.to_dict()
+word_dictionary = word_file.to_dict(orient="records")
 
 
 def generate_word():
-    language = LEARNING_LANGUAGE
-    word_choice = random.randint(0, len(word_dictionary[LEARNING_LANGUAGE]) - 1)
-    language_word = word_dictionary[LEARNING_LANGUAGE][word_choice]
+    word_choice = random.choice(word_dictionary)
+    language_word = word_choice[LEARNING_LANGUAGE]
 
-    card_canvas.itemconfig(lang_text, text=f"{language}")
+    card_canvas.itemconfig(lang_text, text=f"{LEARNING_LANGUAGE}")
     card_canvas.itemconfig(word_text, text=f"{language_word}")
     pass
 
